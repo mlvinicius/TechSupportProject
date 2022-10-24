@@ -1,0 +1,6 @@
+﻿@model TechSupport.Models.Customer
+
+<p>
+    @Model.Name has associated entries. Force delete?
+</p>
+@Html.ActionLink("Confirm", "ForceDelete", new { id = Model.CustomerID }, new { @class = "btn btn-outline-danger" })

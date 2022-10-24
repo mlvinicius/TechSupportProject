@@ -1,0 +1,27 @@
+﻿@model List<TechSupport.Models.Technician>
+@{
+    ViewBag.Title = "Home Page";
+
+}
+<link rel="stylesheet" type="text/css" href="~/Content/Index.css" />
+
+
+<div class="row justify-content-center">
+    <a href="/Techs/TechsList" class="btn btn-dark area-button"><img src="~/Assets/Icons/technician.svg" /><span>Technicians</span></a>
+    <a href="/Incident/IncidentsList" class="btn btn-dark area-button"><img src="~/Assets/Icons/incident.svg" /><span>Incidents</span></a>
+</div>
+<div class="row justify-content-center">
+    <a href="/Products/ProductsList" class="btn btn-dark area-button"><img src="~/Assets/Icons/product.svg" /><span>Product</span></a>
+    <a href="/Customers/CustomersList" class="btn btn-dark area-button"><img src="~/Assets/Icons/user.svg" /><span>Customer</span></a>
+</div>
+<div class="row justify-content-center">
+    <a href="/Registrations/RegistrationsList" class="btn btn-dark area-button"><img src="~/Assets/Icons/registration.svg" /><span>Registration</span></a>
+    <a href="/States/StatesList" class="btn btn-dark area-button"><img src="~/Assets/Icons/state.svg" /><span>States</span></a>
+</div>
+
+@*<div class="autocomplete-container" id="autocomplete-container"></div>
+    <div class="autocomplete-container" id="autocomplete-container-country"></div>
+    <div class="autocomplete-container" id="autocomplete-container-city"></div>*@
+
+<link rel="stylesheet" type="text/css" href="~/Content/address/addressstyle.css" />
+<script src="~/Content/address/addressjs.js"></script>

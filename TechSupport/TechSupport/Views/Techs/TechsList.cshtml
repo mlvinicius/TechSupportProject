@@ -1,0 +1,55 @@
+﻿@model List<TechSupport.Models.Technician>
+@{
+    ViewBag.Title = "Home Page";
+
+}
+<link rel="stylesheet" type="text/css" href="~/Content/Techs.css" />
+<script src="~/Scripts/PageScripts/Techs.js" defer></script>
+<h2 class="text-center">Technicians</h2>
+
+<div class="d-flex">
+    <form action="/Techs/SearchTechs" method="get">
+        <div class="input-group">
+            <input type="search" name="id" id="search" class="form-control shadow-none" placeholder="Tech's name..." />
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary">Search</button>
+            </div>
+        </div>
+    </form>
+    <a class="btn btn-outline-primary ml-auto" href="/Techs/RegisterTech">Create New</a>
+</div>
+<hr />
+<table id="techTable" class="table table-hover table-striped">
+    <tr>
+        <th>Technician ID</th>
+        <th>Name</th>
+        <th>Number of Incidents</th>
+        <th>Open Incidents</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TechID</td>
+            <td>@item.Name</td>
+            <td>@item.Incidents.Count()</td>
+            <td>@item.Incidents.Where(i => i.DateClosed != null).Count()</td>
+            <td>
+                @Html.ActionLink("Edit", "EditTechnician", new { id = item.TechID }, new { @class = "btn btn-outline-primary" })
+                <a onclick="checkEntities(@item.TechID)" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 0; left: 0;">
+    <div class="toast-header">
+        <img src="~/Assets/Icons/errorMsg.png" class="rounded mr-2" alt="ErrorIcon">
+        <strong class="mr-auto">Error</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body"></div>
+</div>
+

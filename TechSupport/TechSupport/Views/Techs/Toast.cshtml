@@ -1,0 +1,7 @@
+﻿@model TechSupport.Models.Technician
+
+<p>
+    Entries associated with @Model.Name detected. Keep other entries?
+</p>
+@Html.ActionLink("Yes", "SafeDelete", new { id = Model.TechID }, new { @class = "btn btn-outline-success" })
+@Html.ActionLink("No", "ForceDelete", new { id = Model.TechID }, new { @class = "btn btn-outline-danger" })

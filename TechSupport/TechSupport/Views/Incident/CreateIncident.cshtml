@@ -1,0 +1,102 @@
+﻿@model TechSupport.Models.Incident
+<script src="~/Scripts/PageScripts/Incidents.js" defer></script>
+@{
+    ViewBag.Title = "CreateIncident";
+    string date = DateTime.Now.ToString("yyyy-MM-dd");
+}
+
+<h2 class="text-center">Create Incident</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="product">Product</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control mb-1" id="prodName" disabled />
+                <a id="product" class="btn btn-outline-primary" onclick="selectProduct()">Select Product</a>
+                <input type="text" hidden id="prodCode" name="ProductCode" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="customer">Customer</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control mb-1" id="custName" disabled />
+                <a id="customer" class="btn btn-outline-primary" onclick="selectCustomer()">Select Customer</a>
+                <input type="text" hidden id="custId" name="CustomerID" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="technician">Technician</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control mb-1" id="techName" disabled />
+                <a id="technician" class="btn btn-outline-primary" onclick="selectTechnician()">Assign Technician</a>
+                <input type="text" hidden id="techId" name="TechID" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateOpened, "Date Opened", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateOpened, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "openDate", @Value = date } })
+                @Html.ValidationMessageFor(model => model.DateOpened, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateClosed, "Date Closed", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateClosed, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.DateClosed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content clearfix">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Customers</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

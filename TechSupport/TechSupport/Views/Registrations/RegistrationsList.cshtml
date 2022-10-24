@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TechSupport.Models.Registration>
+
+@{
+    ViewBag.Title = "RegistrationList";
+}
+
+<h2 class="text-center">Registrations</h2>
+
+<div class="d-flex">
+    <form action="/Registrations/SearchRegistration" method="get">
+        <div class="input-group">
+            <input type="search" name="id" id="search" class="form-control shadow-none" placeholder="Search" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary">Search</button>
+            </div>
+        </div>
+    </form>
+    <a class="btn btn-outline-primary ml-auto" href="/Registrations/CreateRegistration">Create New</a>
+</div>
+<hr />
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CustomerID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customer.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Product.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RegistrationDate)
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "DeleteRegistration", item, new { @class = "btn btn-outline-danger"})
+    </td>
+</tr>
+}
+
+</table>

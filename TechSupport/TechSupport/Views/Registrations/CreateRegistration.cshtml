@@ -1,0 +1,68 @@
+﻿@model TechSupport.Models.Registration
+<script src="~/Scripts/PageScripts/Registration.js" defer></script>
+@{
+    ViewBag.Title = "CreateRegistration";
+    string date = DateTime.Now.ToString("yyyy-MM-dd");
+}
+
+<h2 class="text-center">Create Registration</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="customer">Customer</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control mb-1" id="custName" disabled />
+                <a id="customer" class="btn btn-outline-primary" onclick="selectCustomer()">Select Customer</a>
+                <input type="text" hidden id="custId" name="CustomerID" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="product">Product</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control mb-1" id="prodName" disabled />
+                <a id="product" class="btn btn-outline-primary" onclick="selectProduct()">Select Product</a>
+                <input type="text" hidden id="prodCode" name="ProductCode" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RegistrationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RegistrationDate, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "openDate", @Value = date } })
+                @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content clearfix">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Customers</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

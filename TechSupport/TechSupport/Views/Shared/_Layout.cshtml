@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="marker">
+        <nav class="bg-dark navbar navbar-dark sidebar">
+            <ul class="navbar-nav" id="navlist">
+
+                <li class="nav-item">
+                    <a href="~/Home/Index" class="nav-link">
+                        <img class="mr-1" src="~/Assets/Icons/home.svg" />Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/Techs/TechsList">
+                        <img class="mr-1" src="~/Assets/Icons/technician.svg" />Technicians
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/Incident/IncidentsList">
+                        <img class="mr-1" src="~/Assets/Icons/incident.svg" /><span>Incidents</span>
+                    </a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/Products/ProductsList">
+                        <img class="mr-1" src="~/Assets/Icons/product.svg" /><span>Products</span>
+                    </a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/Customers/CustomersList">
+                        <img class="mr-1" src="~/Assets/Icons/user.svg" /><span>Customer</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="/Registrations/RegistrationsList" class="nav-link">
+                        <img class="mr-1" src="~/Assets/Icons/registration.svg" /><span>Registrations</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="/States/StatesList" class="nav-link">
+                        <img class="mr-1" src="~/Assets/Icons/state.svg" /><span>States</span>
+                    </a>
+                </li>
+            </ul>
+
+        </nav><div class="pagecontent">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

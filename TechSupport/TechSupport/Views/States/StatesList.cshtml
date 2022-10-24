@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TechSupport.Models.State>
+
+@{
+    ViewBag.Title = "StatesList";
+}
+
+<h2 class="text-center">States List</h2>
+
+<div class="d-flex">
+    <form action="/States/SearchState" method="get">
+        <div class="input-group">
+            <input type="search" name="id" id="search" class="form-control shadow-none" placeholder="Search" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary">Search</button>
+            </div>
+        </div>
+    </form>
+    <a class="btn btn-outline-primary ml-auto" href="/States/CreateState">Create New</a>
+</div>
+<hr />
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StateCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastZipCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastZipCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "CreateState", new { id=item.StateCode }, new { @class = "btn btn-outline-primary" })
+            @Html.ActionLink("Delete", "DeleteState", new { id=item.StateCode }, new { @class = "btn btn-outline-danger" })
+        </td>
+    </tr>
+}
+
+</table>

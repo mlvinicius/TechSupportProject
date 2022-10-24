@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TechSupport.Models.Technician>
+
+@{
+    ViewBag.Title = "Assign Technician";
+}
+
+
+<div class="input-group">
+    <input type="search" name="id" id="techSearch" class="form-control shadow-none" placeholder="Search" />
+    <div class="input-group-append">
+        <button class="btn btn-outline-primary" onclick="techSearch()">Search</button>
+    </div>
+</div>
+<hr />
+
+<div class="table table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TechID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TechID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <button onclick="getTechName(@item.TechID)" class="btn btn-outline-primary">Choose</button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
